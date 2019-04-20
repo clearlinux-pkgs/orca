@@ -4,7 +4,7 @@
 #
 Name     : orca
 Version  : 3.32.0
-Release  : 16
+Release  : 17
 URL      : https://download.gnome.org/sources/orca/3.32/orca-3.32.0.tar.xz
 Source0  : https://download.gnome.org/sources/orca/3.32/orca-3.32.0.tar.xz
 Summary  : Screen reader for individuals who are blind or visually impaired
