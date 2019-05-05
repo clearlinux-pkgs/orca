@@ -4,7 +4,7 @@
 #
 Name     : orca
 Version  : 3.32.0
-Release  : 17
+Release  : 18
 URL      : https://download.gnome.org/sources/orca/3.32/orca-3.32.0.tar.xz
 Source0  : https://download.gnome.org/sources/orca/3.32/orca-3.32.0.tar.xz
 Summary  : Screen reader for individuals who are blind or visually impaired
@@ -111,8 +111,14 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1552521825
-export LDFLAGS="${LDFLAGS} -fno-lto"
+export SOURCE_DATE_EPOCH=1557021859
+export AR=gcc-ar
+export RANLIB=gcc-ranlib
+export NM=gcc-nm
+export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FCFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
+export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
 %configure --disable-static
 make  %{?_smp_mflags}
 
@@ -124,7 +130,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1552521825
+export SOURCE_DATE_EPOCH=1557021859
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/orca
 cp COPYING %{buildroot}/usr/share/package-licenses/orca/COPYING
