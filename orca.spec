@@ -4,10 +4,10 @@
 #
 Name     : orca
 Version  : 3.34.0
-Release  : 20
+Release  : 21
 URL      : https://download.gnome.org/sources/orca/3.34/orca-3.34.0.tar.xz
 Source0  : https://download.gnome.org/sources/orca/3.34/orca-3.34.0.tar.xz
-Summary  : Screen reader for individuals who are blind or visually impaired
+Summary  : No detailed summary available
 Group    : Development/Tools
 License  : LGPL-2.1
 Requires: orca-bin = %{version}-%{release}
@@ -17,6 +17,7 @@ Requires: orca-locales = %{version}-%{release}
 Requires: orca-man = %{version}-%{release}
 Requires: orca-python = %{version}-%{release}
 Requires: orca-python3 = %{version}-%{release}
+Requires: pyatspi-python3
 BuildRequires : buildreq-gnome
 BuildRequires : gettext
 BuildRequires : gobject-introspection
@@ -106,14 +107,14 @@ python3 components for the orca package.
 
 %prep
 %setup -q -n orca-3.34.0
+cd %{_builddir}/orca-3.34.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1568049704
-# -Werror is for werrorists
+export SOURCE_DATE_EPOCH=1573165069
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -133,11 +134,11 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1568049704
+export SOURCE_DATE_EPOCH=1573165069
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/orca
-cp COPYING %{buildroot}/usr/share/package-licenses/orca/COPYING
-cp icons/COPYING %{buildroot}/usr/share/package-licenses/orca/icons_COPYING
+cp %{_builddir}/orca-3.34.0/COPYING %{buildroot}/usr/share/package-licenses/orca/01a6b4bf79aca9b556822601186afab86e8c4fbf
+cp %{_builddir}/orca-3.34.0/icons/COPYING %{buildroot}/usr/share/package-licenses/orca/a1b087217d26810acdf85a9db199e8f3605b743a
 %make_install
 %find_lang orca
 
@@ -801,8 +802,8 @@ cp icons/COPYING %{buildroot}/usr/share/package-licenses/orca/icons_COPYING
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/orca/COPYING
-/usr/share/package-licenses/orca/icons_COPYING
+/usr/share/package-licenses/orca/01a6b4bf79aca9b556822601186afab86e8c4fbf
+/usr/share/package-licenses/orca/a1b087217d26810acdf85a9db199e8f3605b743a
 
 %files man
 %defattr(0644,root,root,0755)
