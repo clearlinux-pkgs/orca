@@ -4,7 +4,7 @@
 #
 Name     : orca
 Version  : 3.34.1
-Release  : 24
+Release  : 25
 URL      : https://download.gnome.org/sources/orca/3.34/orca-3.34.1.tar.xz
 Source0  : https://download.gnome.org/sources/orca/3.34/orca-3.34.1.tar.xz
 Summary  : No detailed summary available
