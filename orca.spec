@@ -4,10 +4,10 @@
 #
 Name     : orca
 Version  : 3.34.1
-Release  : 25
+Release  : 26
 URL      : https://download.gnome.org/sources/orca/3.34/orca-3.34.1.tar.xz
 Source0  : https://download.gnome.org/sources/orca/3.34/orca-3.34.1.tar.xz
-Summary  : No detailed summary available
+Summary  : Screen reader for individuals who are blind or visually impaired
 Group    : Development/Tools
 License  : LGPL-2.1
 Requires: orca-bin = %{version}-%{release}
@@ -114,7 +114,8 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1576598977
+export SOURCE_DATE_EPOCH=1583193084
+# -Werror is for werrorists
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -134,7 +135,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1576598977
+export SOURCE_DATE_EPOCH=1583193084
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/orca
 cp %{_builddir}/orca-3.34.1/COPYING %{buildroot}/usr/share/package-licenses/orca/01a6b4bf79aca9b556822601186afab86e8c4fbf
