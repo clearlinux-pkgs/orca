@@ -4,7 +4,7 @@
 #
 Name     : orca
 Version  : 3.38.0
-Release  : 31
+Release  : 32
 URL      : https://download.gnome.org/sources/orca/3.38/orca-3.38.0.tar.xz
 Source0  : https://download.gnome.org/sources/orca/3.38/orca-3.38.0.tar.xz
 Summary  : No detailed summary available
