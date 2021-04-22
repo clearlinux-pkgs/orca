@@ -1,5 +1,5 @@
 Configure miss: 32-bit host C ABI
 Configure miss: CFLocaleCopyPreferredLanguages
 Configure miss: python module brlapi
-Configure miss: python module speechd
 Configure miss: python module louis
+Configure miss: python module speechd
