@@ -4,7 +4,7 @@
 #
 Name     : orca
 Version  : 43.0
-Release  : 58
+Release  : 59
 URL      : https://download.gnome.org/sources/orca/43/orca-43.0.tar.xz
 Source0  : https://download.gnome.org/sources/orca/43/orca-43.0.tar.xz
 Summary  : No detailed summary available
