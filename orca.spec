@@ -4,7 +4,7 @@
 #
 Name     : orca
 Version  : 43.0
-Release  : 60
+Release  : 61
 URL      : https://download.gnome.org/sources/orca/43/orca-43.0.tar.xz
 Source0  : https://download.gnome.org/sources/orca/43/orca-43.0.tar.xz
 Summary  : No detailed summary available
@@ -114,7 +114,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1664161497
+export SOURCE_DATE_EPOCH=1666722142
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -134,7 +134,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1664161497
+export SOURCE_DATE_EPOCH=1666722142
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/orca
 cp %{_builddir}/orca-%{version}/COPYING %{buildroot}/usr/share/package-licenses/orca/01a6b4bf79aca9b556822601186afab86e8c4fbf || :
