@@ -5,7 +5,7 @@
 #
 Name     : orca
 Version  : 44.0
-Release  : 63
+Release  : 64
 URL      : https://download.gnome.org/sources/orca/44/orca-44.0.tar.xz
 Source0  : https://download.gnome.org/sources/orca/44/orca-44.0.tar.xz
 Summary  : No detailed summary available
@@ -21,9 +21,14 @@ Requires: orca-python3 = %{version}-%{release}
 Requires: pyatspi-python3
 BuildRequires : buildreq-configure
 BuildRequires : buildreq-gnome
+BuildRequires : gettext
 BuildRequires : gobject-introspection
 BuildRequires : gobject-introspection-dev
 BuildRequires : gstreamer-dev
+BuildRequires : perl(XML::Parser)
+BuildRequires : pkgconfig(atk-bridge-2.0)
+BuildRequires : pkgconfig(atspi-2)
+BuildRequires : pkgconfig(gstreamer-1.0)
 BuildRequires : pkgconfig(pygobject-3.0)
 BuildRequires : pygobject
 # Suppress stripping binaries
@@ -115,7 +120,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1679930023
+export SOURCE_DATE_EPOCH=1680041403
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -135,7 +140,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1679930023
+export SOURCE_DATE_EPOCH=1680041403
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/orca
 cp %{_builddir}/orca-%{version}/COPYING %{buildroot}/usr/share/package-licenses/orca/01a6b4bf79aca9b556822601186afab86e8c4fbf || :
