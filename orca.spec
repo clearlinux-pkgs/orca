@@ -4,10 +4,10 @@
 # Using build pattern: configure
 #
 Name     : orca
-Version  : 44.0
-Release  : 64
-URL      : https://download.gnome.org/sources/orca/44/orca-44.0.tar.xz
-Source0  : https://download.gnome.org/sources/orca/44/orca-44.0.tar.xz
+Version  : 44.1
+Release  : 65
+URL      : https://download.gnome.org/sources/orca/44/orca-44.1.tar.xz
+Source0  : https://download.gnome.org/sources/orca/44/orca-44.1.tar.xz
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : LGPL-2.1
@@ -24,7 +24,6 @@ BuildRequires : buildreq-gnome
 BuildRequires : gettext
 BuildRequires : gobject-introspection
 BuildRequires : gobject-introspection-dev
-BuildRequires : gstreamer-dev
 BuildRequires : perl(XML::Parser)
 BuildRequires : pkgconfig(atk-bridge-2.0)
 BuildRequires : pkgconfig(atspi-2)
@@ -36,7 +35,7 @@ BuildRequires : pygobject
 %define debug_package %{nil}
 
 %description
-# Orca v44.0
+# Orca v44.1
 ## Introduction
 Orca is a free, open source, flexible, and extensible screen reader
 that provides access to the graphical desktop via user-customizable
@@ -112,41 +111,60 @@ python3 components for the orca package.
 
 
 %prep
-%setup -q -n orca-44.0
-cd %{_builddir}/orca-44.0
+%setup -q -n orca-44.1
+cd %{_builddir}/orca-44.1
+pushd ..
+cp -a orca-44.1 buildavx2
+popd
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1680041403
+export SOURCE_DATE_EPOCH=1685123546
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
-export CFLAGS="$CFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
-export FCFLAGS="$FFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
-export FFLAGS="$FFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
-export CXXFLAGS="$CXXFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
+export CFLAGS="$CFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
+export FCFLAGS="$FFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
+export FFLAGS="$FFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
+export CXXFLAGS="$CXXFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
 %configure --disable-static
 make  %{?_smp_mflags}
 
+unset PKG_CONFIG_PATH
+pushd ../buildavx2/
+export CFLAGS="$CFLAGS -m64 -march=x86-64-v3 -Wl,-z,x86-64-v3"
+export CXXFLAGS="$CXXFLAGS -m64 -march=x86-64-v3 -Wl,-z,x86-64-v3"
+export FFLAGS="$FFLAGS -m64 -march=x86-64-v3 -Wl,-z,x86-64-v3"
+export FCFLAGS="$FCFLAGS -m64 -march=x86-64-v3"
+export LDFLAGS="$LDFLAGS -m64 -march=x86-64-v3"
+%configure --disable-static
+make  %{?_smp_mflags}
+popd
 %check
 export LANG=C.UTF-8
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 make %{?_smp_mflags} check
+cd ../buildavx2;
+make %{?_smp_mflags} check || :
 
 %install
-export SOURCE_DATE_EPOCH=1680041403
+export SOURCE_DATE_EPOCH=1685123546
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/orca
 cp %{_builddir}/orca-%{version}/COPYING %{buildroot}/usr/share/package-licenses/orca/01a6b4bf79aca9b556822601186afab86e8c4fbf || :
 cp %{_builddir}/orca-%{version}/icons/COPYING %{buildroot}/usr/share/package-licenses/orca/a1b087217d26810acdf85a9db199e8f3605b743a || :
+pushd ../buildavx2/
+%make_install_v3
+popd
 %make_install
 %find_lang orca
+/usr/bin/elf-move.py avx2 %{buildroot}-v3 %{buildroot} %{buildroot}/usr/share/clear/filemap/filemap-%{name}
 
 %files
 %defattr(-,root,root,-)
