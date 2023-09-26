@@ -4,10 +4,10 @@
 # Using build pattern: configure
 #
 Name     : orca
-Version  : 44.1
-Release  : 65
-URL      : https://download.gnome.org/sources/orca/44/orca-44.1.tar.xz
-Source0  : https://download.gnome.org/sources/orca/44/orca-44.1.tar.xz
+Version  : 45.0
+Release  : 66
+URL      : https://download.gnome.org/sources/orca/45/orca-45.0.tar.xz
+Source0  : https://download.gnome.org/sources/orca/45/orca-45.0.tar.xz
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : LGPL-2.1
@@ -35,7 +35,7 @@ BuildRequires : pygobject
 %define debug_package %{nil}
 
 %description
-# Orca v44.1
+# Orca v45.0
 ## Introduction
 Orca is a free, open source, flexible, and extensible screen reader
 that provides access to the graphical desktop via user-customizable
@@ -111,10 +111,10 @@ python3 components for the orca package.
 
 
 %prep
-%setup -q -n orca-44.1
-cd %{_builddir}/orca-44.1
+%setup -q -n orca-45.0
+cd %{_builddir}/orca-45.0
 pushd ..
-cp -a orca-44.1 buildavx2
+cp -a orca-45.0 buildavx2
 popd
 
 %build
@@ -122,7 +122,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1685123546
+export SOURCE_DATE_EPOCH=1695687303
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -154,7 +154,7 @@ cd ../buildavx2;
 make %{?_smp_mflags} check || :
 
 %install
-export SOURCE_DATE_EPOCH=1685123546
+export SOURCE_DATE_EPOCH=1695687303
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/orca
 cp %{_builddir}/orca-%{version}/COPYING %{buildroot}/usr/share/package-licenses/orca/01a6b4bf79aca9b556822601186afab86e8c4fbf || :
@@ -823,6 +823,59 @@ popd
 /usr/share/help/pt_BR/orca/preferences_text_attributes.page
 /usr/share/help/pt_BR/orca/preferences_voice.page
 /usr/share/help/pt_BR/orca/preferences_web.page
+/usr/share/help/ru/orca/commands.page
+/usr/share/help/ru/orca/commands_bookmarks.page
+/usr/share/help/ru/orca/commands_braille.page
+/usr/share/help/ru/orca/commands_chat.page
+/usr/share/help/ru/orca/commands_controlling_orca.page
+/usr/share/help/ru/orca/commands_debugging.page
+/usr/share/help/ru/orca/commands_find.page
+/usr/share/help/ru/orca/commands_flat_review.page
+/usr/share/help/ru/orca/commands_live_regions.page
+/usr/share/help/ru/orca/commands_mouse.page
+/usr/share/help/ru/orca/commands_profiles.page
+/usr/share/help/ru/orca/commands_reading.page
+/usr/share/help/ru/orca/commands_speech_settings.page
+/usr/share/help/ru/orca/commands_structural_navigation.page
+/usr/share/help/ru/orca/commands_table.page
+/usr/share/help/ru/orca/commands_time_date_notifications.page
+/usr/share/help/ru/orca/commands_where_am_i.page
+/usr/share/help/ru/orca/figures/orca-logo.png
+/usr/share/help/ru/orca/howto_bookmarks.page
+/usr/share/help/ru/orca/howto_documents.page
+/usr/share/help/ru/orca/howto_flat_review.page
+/usr/share/help/ru/orca/howto_forms.page
+/usr/share/help/ru/orca/howto_key_bindings.page
+/usr/share/help/ru/orca/howto_keyboard_layout.page
+/usr/share/help/ru/orca/howto_learn_modes.page
+/usr/share/help/ru/orca/howto_live_regions.page
+/usr/share/help/ru/orca/howto_mouse_review.page
+/usr/share/help/ru/orca/howto_notifications.page
+/usr/share/help/ru/orca/howto_orca_find.page
+/usr/share/help/ru/orca/howto_profiles.page
+/usr/share/help/ru/orca/howto_setting_up_orca.page
+/usr/share/help/ru/orca/howto_structural_navigation.page
+/usr/share/help/ru/orca/howto_tables.page
+/usr/share/help/ru/orca/howto_text_attributes.page
+/usr/share/help/ru/orca/howto_the_orca_modifier.page
+/usr/share/help/ru/orca/howto_toggling_caps_lock.page
+/usr/share/help/ru/orca/howto_whereami.page
+/usr/share/help/ru/orca/index.page
+/usr/share/help/ru/orca/introduction.page
+/usr/share/help/ru/orca/preferences.page
+/usr/share/help/ru/orca/preferences_braille.page
+/usr/share/help/ru/orca/preferences_chat.page
+/usr/share/help/ru/orca/preferences_general.page
+/usr/share/help/ru/orca/preferences_introduction.page
+/usr/share/help/ru/orca/preferences_key_bindings.page
+/usr/share/help/ru/orca/preferences_key_echo.page
+/usr/share/help/ru/orca/preferences_pronunciation.page
+/usr/share/help/ru/orca/preferences_speech.page
+/usr/share/help/ru/orca/preferences_spellcheck.page
+/usr/share/help/ru/orca/preferences_table_navigation.page
+/usr/share/help/ru/orca/preferences_text_attributes.page
+/usr/share/help/ru/orca/preferences_voice.page
+/usr/share/help/ru/orca/preferences_web.page
 /usr/share/help/sl/orca/commands.page
 /usr/share/help/sl/orca/commands_bookmarks.page
 /usr/share/help/sl/orca/commands_braille.page
