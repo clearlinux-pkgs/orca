@@ -7,7 +7,7 @@
 #
 Name     : orca
 Version  : 47.0
-Release  : 75
+Release  : 76
 URL      : https://download.gnome.org/sources/orca/47/orca-47.0.tar.xz
 Source0  : https://download.gnome.org/sources/orca/47/orca-47.0.tar.xz
 Summary  : Python library for task orchestration
