@@ -6,10 +6,10 @@
 # autospec commit: 65cf152
 #
 Name     : orca
-Version  : 48.5
-Release  : 82
-URL      : https://download.gnome.org/sources/orca/48/orca-48.5.tar.xz
-Source0  : https://download.gnome.org/sources/orca/48/orca-48.5.tar.xz
+Version  : 48.6
+Release  : 83
+URL      : https://download.gnome.org/sources/orca/48/orca-48.6.tar.xz
+Source0  : https://download.gnome.org/sources/orca/48/orca-48.6.tar.xz
 Summary  : Python library for task orchestration
 Group    : Development/Tools
 License  : LGPL-2.1
@@ -30,7 +30,7 @@ BuildRequires : pypi(types_psutil)
 %define debug_package %{nil}
 
 %description
-# Orca v48.5
+# Orca v48.6
 [TOC]
 ## Attention Application Developers
 If you are an application developer trying to make your application work with Orca, please see the
@@ -68,10 +68,10 @@ python3 components for the orca package.
 
 
 %prep
-%setup -q -n orca-48.5
-cd %{_builddir}/orca-48.5
+%setup -q -n orca-48.6
+cd %{_builddir}/orca-48.6
 pushd ..
-cp -a orca-48.5 buildavx2
+cp -a orca-48.6 buildavx2
 popd
 
 %build
@@ -79,7 +79,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1750697640
+export SOURCE_DATE_EPOCH=1751314805
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
